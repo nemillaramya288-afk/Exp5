@@ -1,15 +1,17 @@
 pipeline {
-  agent any
-  stages [
-    stages('compile') {
-      steps {
-        sh 'javac HelloWorld.java'
-      }
+    agent any
+
+    stages {
+        stage('Compile') {
+            steps {
+                sh 'javac HelloWorld.java'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                sh 'java HelloWorld'
+            }
+        }
     }
-    stage('Run') {
-      steps {
-        sh 'java HelloWorld'
-      }
-    }
-    }
-    }
+}
